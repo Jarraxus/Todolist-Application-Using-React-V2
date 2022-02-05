@@ -21,11 +21,10 @@ const Home = () => {
 			<div className="thelist">
 				<input
 					className="input"
-					placeholder="New Task"
+					placeholder="Input New Task"
 					onChange={onChange}></input>
 
 				<ul>
-					<Todo />
 					<li>{inputValue}</li>
 				</ul>
 			</div>

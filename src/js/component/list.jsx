@@ -2,7 +2,7 @@ import React from "react";
 import { tasks } from "./tasks";
 
 export const list = () => {
-	const todos = ["test"];
+	const todos = [""];
 
     return (
         <ul>
