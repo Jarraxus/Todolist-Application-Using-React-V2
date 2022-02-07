@@ -19,7 +19,7 @@ export const List = () => {
 	return (
 		<div className="form-body border">
 			<h1 className="header text-center">Jarraxus' Todo List</h1>
-			<div className="form-input border">
+			<div className="form-input">
 				<input
 					className="form"
 					type="text"
@@ -28,8 +28,8 @@ export const List = () => {
 					onChange={(e) => setTask(e.target.value)}
 					onKeyUp={Add}
 				/>
-				<div className="listed-items">
-					{/* insert <li>'s here */}
+				<div className="listed-items">{/* insert <li>'s here */}</div>
+				<div>
 					<small className="task-amount">
 						<em>{listedItems.length}</em>
 					</small>
