@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { render } from "react-dom";
 import { Task } from "./Task";
 
 export const List = () => {
@@ -6,26 +7,24 @@ export const List = () => {
 	const [listedItems, setListedItems] = useState([]);
 
 	const Add = (e) => {
-		if (e.keyCode == 13) {
+		if (e.keyCode == 13 && e.target.value != "") {
 			setListedItems([...listedItems, task]);
 			setTask("");
 		}
 	};
 
 	const Remove = (index) => {
-		let filteredArray = listedItems.filter((item, i) => {
-			i != index;
-		});
+		let filteredArray = listedItems.filter((item, i) => i != index);
 		setListedItems(filteredArray);
 	};
 
 	const Counter = () => {
-		if ([listedItems.length] > 1) {
+		if (listedItems.length > 1) {
 			return `${listedItems.length}` + " items left on your list";
-		} else if ([listedItems.length] > 0) {
+		} else if (listedItems.length > 0) {
 			return "1 item left on your list";
 		} else {
-			return "No tasks";
+			return "No tasks, add a task";
 		}
 	};
 

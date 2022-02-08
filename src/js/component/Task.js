@@ -5,9 +5,9 @@ export const Task = (props) => {
 	return (
 		<li className="listed-tasks">
 			{props.task}
-			<span className="delete" onClick={() => props.remove(props.ind)}>
-				<i className="fa fa-trash" id="delete"></i>
-			</span>
+			<i
+				className="delete fa fa-trash"
+				onClick={() => props.remove(props.ind)}></i>
 		</li>
 	);
 };
