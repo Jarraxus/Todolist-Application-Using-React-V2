@@ -17,3 +17,15 @@
 .listed-items {
   border-bottom: 1px gray;
 }
+
+.listed-tasks i {
+  color: red;
+  margin-top: 5px;
+  display: inline-block;
+  float: right;
+  font-size: small;
+}
+
+.listed-tasks {
+  list-style: none;
+}

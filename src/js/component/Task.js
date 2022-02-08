@@ -1,12 +1,19 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 export const Task = (props) => {
 	return (
-		<li id={props.id} className="listed-tasks">
+		<li className="listed-tasks">
 			{props.task}
-			<span classNAme="delete">
-				<i className="far fa-trash"></i>
+			<span className="delete" onClick={() => props.remove(props.ind)}>
+				<i className="fa fa-trash" id="delete"></i>
 			</span>
 		</li>
 	);
+};
+
+Task.propTypes = {
+	task: PropTypes.string,
+	remove: PropTypes.func,
+	ind: PropTypes.number,
 };
