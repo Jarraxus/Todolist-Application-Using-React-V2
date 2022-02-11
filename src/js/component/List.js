@@ -12,23 +12,12 @@ export const List = () => {
 	}, []); // <- ONLY on page load
 
 	function getList() {
-		fetch(url) // calling the URL variable
+		fetch(url, { method: "GET" })
 			.then((response) => {
-				// checking if response is ok. If not, sending Error code
-				if (!response.ok) {
-					throw Error(response.statusText);
-				} // if response good, read the response
-				return response.json(); // Read the response as json.
+				return response.json();
 			})
-			.then((responseAsJson) => {
-				// Do stuff with the JSONified response
-				let result = [];
-				for (var i in responseAsJson) result.push([responseAsJson[i]]);
-				console.log("this is the response", responseAsJson);
-				console.log("this is the result", result);
-				setListedItems(result); // setting the listedItems as the responseAsJson we imported - currently broke as hell
-
-				console.log("this is the list", listedItems);
+			.then((data) => {
+				setListedItems(data);
 			})
 			.catch((error) => {
 				console.log("Looks like there was a problem: \n", error);
@@ -37,7 +26,7 @@ export const List = () => {
 
 	const Add = (e) => {
 		if (e.keyCode == 13 && e.target.value != "") {
-			setListedItems([...listedItems, task]);
+			setListedItems([...listedItems, { label: task, done: false }]);
 			setTask("");
 		}
 	};
@@ -72,12 +61,7 @@ export const List = () => {
 				<div className="listed-items">
 					<ul>
 						{listedItems.map((item, index) => (
-							<Task
-								ind={index}
-								key={index}
-								task={item}
-								remove={Remove}
-							/>
+							<Task key={index} task={item} remove={Remove} />
 						))}
 					</ul>
 				</div>

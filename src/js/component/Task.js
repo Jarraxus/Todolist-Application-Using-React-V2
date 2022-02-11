@@ -4,7 +4,7 @@ import React from "react";
 export const Task = (props) => {
 	return (
 		<li className="listed-tasks">
-			{props.task}
+			{props.task.label}
 			<i
 				className="delete fa fa-trash"
 				onClick={() => props.remove(props.ind)}></i>
@@ -13,7 +13,7 @@ export const Task = (props) => {
 };
 
 Task.propTypes = {
-	task: PropTypes.string,
+	task: PropTypes.object,
 	remove: PropTypes.func,
 	ind: PropTypes.number,
 };
