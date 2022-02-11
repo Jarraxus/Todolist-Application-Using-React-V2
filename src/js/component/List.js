@@ -24,9 +24,21 @@ export const List = () => {
 			});
 	}
 
+	function updateAPI(updatedList) {
+		fetch(url, {
+			method: "PUT",
+			body: JSON.stringify(updatedList),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	}
+
 	const Add = (e) => {
 		if (e.keyCode == 13 && e.target.value != "") {
-			setListedItems([...listedItems, { label: task, done: false }]);
+			let newTodos = [...listedItems, { label: task, done: false }];
+			setListedItems(newTodos);
+			updateAPI(newTodos);
 			setTask("");
 		}
 	};
@@ -34,6 +46,7 @@ export const List = () => {
 	const Remove = (index) => {
 		let filteredArray = listedItems.filter((item, i) => i != index);
 		setListedItems(filteredArray);
+		updateAPI(filteredArray);
 	};
 
 	const Counter = () => {
@@ -61,7 +74,12 @@ export const List = () => {
 				<div className="listed-items">
 					<ul>
 						{listedItems.map((item, index) => (
-							<Task key={index} task={item} remove={Remove} />
+							<Task
+								key={index}
+								ind={index}
+								task={item}
+								remove={Remove}
+							/>
 						))}
 					</ul>
 				</div>
