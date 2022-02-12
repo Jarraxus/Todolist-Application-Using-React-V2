@@ -62,13 +62,28 @@ export const List = () => {
 		updateAPI(filteredArray);
 	};
 
+	const Complete = (index) => {
+		let completedTodos = listedItems.map((item, i) => {
+			if (index == i) {
+				item.done = !item.done;
+				return item;
+			} else {
+				return item;
+			}
+		});
+		setListedItems(completedTodos);
+		updateAPI(completedTodos);
+	};
+
 	const Counter = () => {
 		if (listedItems.length > 1) {
-			return `${listedItems.length}` + " items left on your list";
+			return (
+				`${listedItems.length}` + " unfinished items left on your list"
+			);
 		} else if (listedItems.length > 0) {
-			return "1 item left on your list";
+			return "1 unfinished item left on your list";
 		} else {
-			return "No tasks, add a task";
+			return "No unfinished tasks, add a task";
 		}
 	};
 
@@ -88,10 +103,15 @@ export const List = () => {
 					<ul>
 						{listedItems.map((item, index) => (
 							<li className="listed-tasks" key={index}>
-								{item.label}
+								<span className={item.done ? "strike" : ""}>
+									{item.label}
+								</span>
 								<i
 									className="delete fa fa-trash"
 									onClick={() => Remove(index)}></i>
+								<i
+									className="complete fa fa-check"
+									onClick={() => Complete(index)}></i>
 							</li>
 						))}
 					</ul>

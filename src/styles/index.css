@@ -27,7 +27,6 @@
 }
 
 .listed-tasks i {
-  color: red;
   margin-top: 5px;
   display: inline;
 }
@@ -36,19 +35,28 @@
   list-style: none;
   border-bottom: 1px solid gray;
   width: 100%;
+  text-align: center;
 }
 
-.delete {
-  display: none;
-}
-
-.listed-tasks .delete{
+.listed-tasks i {
   visibility: hidden;
+  }
+
+.listed-tasks .complete {
+    visibility: hidden;
   }
   
 .listed-tasks:hover .delete {
   visibility: visible;
   float: right;
+  color: red;
+}
+
+.listed-tasks:hover .complete {
+  visibility: visible;
+  color: green;
+  float: left;
+  padding-right: 2%;
 }
 
 .counter {
@@ -58,3 +66,6 @@
   width: 50%;
 }
 
+.strike {
+  text-decoration: line-through;
+}
